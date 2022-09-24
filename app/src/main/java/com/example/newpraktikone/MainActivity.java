@@ -74,9 +74,9 @@ public class MainActivity extends AppCompatActivity  {
                 while (resultSet.next())
                 {
 
-                    ID.setText(ID + resultSet.getString(  1) + "\n");
-                    Title.setText(Title + resultSet.getString(  2)+ "\n");
-                    Count.setText( Count + resultSet.getString(  3)+ "\n");
+                    ID.setText( resultSet.getString(  1) );
+                    Title.setText( resultSet.getString(  2));
+                    Count.setText(  resultSet.getString(  3));
 
                 }
                 connection.close();
