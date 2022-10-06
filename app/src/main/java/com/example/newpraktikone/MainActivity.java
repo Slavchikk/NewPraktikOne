@@ -3,16 +3,17 @@ package com.example.newpraktikone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.LauncherActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
+import java.util.List;
+import java.util.Map;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -21,15 +22,19 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);        setContentView(R.layout.activity_main);
+
         Button btnDisplayDate = (Button) findViewById(R.id.displayDate);
         Button btnGoToSetWindow = (Button) findViewById(R.id.btnGoToSetWindow);
 
         btnDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetTextFrommSql(v);
+
+                ListViewFullScreen viewList = new ListViewFullScreen();
+                Intent intent1 = new Intent(MainActivity.this,ListViewFullScreen.class);
+                startActivity(intent1);
+
             }
         });
 
@@ -45,13 +50,26 @@ public class MainActivity extends AppCompatActivity  {
 
         btnGoToSetWindow.setOnClickListener(clckGoToSetWindow);
 
-
-
-
-
     }
 
-    public void GetTextFrommSql(View v)
+       /* SimpleAdapter ad;
+    public void  GetList(View v)
+    {
+        ListView listData = (ListView) findViewById(R.id.listData);
+        List<Map<String,String>> MyDataList = null;
+        LauncherActivity.ListItem MyData = new LauncherActivity.ListItem();
+
+        ListItem Mydata = new ListItem();
+        MyDataList = Mydata.getList();
+
+
+        String[] fromsql = {"Kod_id","Name_product","Price_product"};
+        int[] Tow= {R.id.txtListID,R.id.txtListTitle,R.id.txtListCount};
+        ad = new SimpleAdapter(MainActivity.this,MyDataList,R.layout.list_layout_template,fromsql,Tow);
+        listData.setAdapter(ad);
+    }*/
+
+   /* public void GetTextFrommSql(View v)
     {
 
         TextView ID = findViewById(R.id.txtID);
@@ -94,7 +112,7 @@ public class MainActivity extends AppCompatActivity  {
 
        }
 
-    }
+    }*/
 
 
 

@@ -18,11 +18,12 @@ import java.sql.Statement;
 
 public class setProduct extends AppCompatActivity {
 
-    EditText txtProductSet,txtPriceSet;
+    EditText txtProductSet,txtPriceSet,txtIDSet;
     Button btnSetData;
     TextView status;
-
+    Button btnInsertData;
     PreparedStatement stwt;
+    Button btnDeleteData;
     Connection connection;
     Statement stmt;
     @Override
@@ -33,14 +34,27 @@ public class setProduct extends AppCompatActivity {
 
         txtProductSet = (EditText)findViewById(R.id.txtProductSet);
         txtPriceSet = (EditText)findViewById(R.id.txtPriceSet);
-
+        txtIDSet = (EditText)findViewById(R.id.txtIDSet);
         btnSetData = (Button)findViewById(R.id.btnSetData);
+        btnInsertData = (Button)findViewById(R.id.btnInsertData);
+        btnDeleteData = (Button)findViewById(R.id.btnDeleteData);
         status = (TextView)findViewById(R.id.status);
-
+        btnDeleteData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new setProduct.deleteDate().execute("");
+            }
+        });
         btnSetData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new setProduct.setDate().execute("");
+            }
+        });
+
+        btnInsertData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { new setProduct.insertDate().execute("");
             }
         });
 
@@ -57,7 +71,7 @@ public class setProduct extends AppCompatActivity {
         btnGoToMain.setOnClickListener(clckGoToMain);
 
     }
-    public class setDate extends AsyncTask<String, String,String>{
+    public class deleteDate extends AsyncTask<String, String,String> {
 
         String z = "";
         Boolean inSuccess = false;
@@ -72,6 +86,7 @@ public class setProduct extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             status.setText("Registration successuful");
+            txtIDSet.setText("");
             txtProductSet.setText("");
             txtPriceSet.setText("");
         }
@@ -79,26 +94,111 @@ public class setProduct extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
 
-            try{
+            try {
                 ConnectionHelper connectionHelper = new ConnectionHelper();
                 connection = connectionHelper.connectionClass();
-                if(connection == null){
+                if (connection == null) {
                     z = "Check your Internet Connection";
-                 }
-                else{
-                    String sql = "Insert into Products (Name_product,Price_product) values ('"+txtProductSet.getText()+"','"+txtPriceSet.getText()+"')";
-                    stmt = connection.createStatement();
+                } else {
+                    String sql = "delete Products  where Kod_id = " + txtIDSet.getText() + ";";
+                     stmt = connection.createStatement();
                     stmt.executeUpdate(sql);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 inSuccess = false;
                 z = e.getMessage();
 
             }
 
-             return z;
+            return z;
+        }
+    }
+    public class insertDate extends AsyncTask<String, String,String> {
+
+        String z = "";
+        Boolean inSuccess = false;
+
+
+        @Override
+        protected void onPreExecute() {
+            status.setText("Sending Data to Database");
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            status.setText("Registration successuful");
+            txtIDSet.setText("");
+            txtProductSet.setText("");
+            txtPriceSet.setText("");
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+                ConnectionHelper connectionHelper = new ConnectionHelper();
+                connection = connectionHelper.connectionClass();
+                if (connection == null) {
+                    z = "Check your Internet Connection";
+                } else {
+                    String sql = "update Products set Name_product = '" + txtProductSet.getText() + "', Price_product = " + txtPriceSet.getText() + " where Kod_id = " + txtIDSet.getText() + ";";
+                    //String sql = "Select into Products (Name_product,Price_product) values ('" + txtProductSet.getText() + "','" + txtPriceSet.getText() + "')";
+                    stmt = connection.createStatement();
+                    stmt.executeUpdate(sql);
+                }
+            } catch (Exception e) {
+                inSuccess = false;
+                z = e.getMessage();
+
+            }
+
+            return z;
         }
     }
 
+        public class setDate extends AsyncTask<String, String, String> {
 
-}
+            String z = "";
+            Boolean inSuccess = false;
+
+
+            @Override
+            protected void onPreExecute() {
+                status.setText("Sending Data to Database");
+
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                status.setText("Registration successuful");
+                txtIDSet.setText("");
+                txtProductSet.setText("");
+                txtPriceSet.setText("");
+            }
+
+            @Override
+            protected String doInBackground(String... strings) {
+
+                try {
+                    ConnectionHelper connectionHelper = new ConnectionHelper();
+                    connection = connectionHelper.connectionClass();
+                    if (connection == null) {
+                        z = "Check your Internet Connection";
+                    } else {
+                        String sql = "Insert into Products (Kod_id,Name_product,Price_product) values ('" + txtIDSet.getText() + "', '" + txtProductSet.getText() + "','" + txtPriceSet.getText() + "')";
+                        stmt = connection.createStatement();
+                        stmt.executeUpdate(sql);
+                    }
+                } catch (Exception e) {
+                    inSuccess = false;
+                    z = e.getMessage();
+
+                }
+
+                return z;
+            }
+        }
+
+
+    }
