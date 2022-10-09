@@ -39,6 +39,18 @@ public class setProduct extends AppCompatActivity {
         btnInsertData = (Button)findViewById(R.id.btnInsertData);
         btnDeleteData = (Button)findViewById(R.id.btnDeleteData);
         status = (TextView)findViewById(R.id.status);
+
+
+        Intent intent = this.getIntent();
+        if(intent!=null)
+        {
+            String listId = intent.getStringExtra("listId");
+            String listCount = intent.getStringExtra("listCount");
+            String listTitle = intent.getStringExtra("listTitle");
+            txtProductSet.setText(listTitle);
+            txtPriceSet.setText(listCount);
+            txtIDSet.setText(listId);
+        }
         btnDeleteData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
