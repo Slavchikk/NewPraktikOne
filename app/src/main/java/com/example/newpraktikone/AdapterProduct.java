@@ -11,27 +11,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-public class AdapterMask extends BaseAdapter {
+public class AdapterProduct extends BaseAdapter {
 
     private Context mContext;
-    public AdapterMask(Context mContext, List<Mask> maskList) {
+    public AdapterProduct(Context mContext, List<Products> productsList) {
         this.mContext = mContext;
-        this.maskList = maskList;
+        this.productsList = productsList;
     }
-    List<Mask> maskList;
+    List<Products> productsList;
     @Override
     public int getCount() {
-        return maskList.size();
+        return productsList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return maskList.get(i);
+        return productsList.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return maskList.get(i).getID();
+        return productsList.get(i).getID();
     }
 
 
@@ -43,22 +43,22 @@ public class AdapterMask extends BaseAdapter {
             return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         }
         else
-            return BitmapFactory.decodeResource(AdapterMask.this.mContext.getResources(),R.drawable.ic_launcher_background);
+            return BitmapFactory.decodeResource(AdapterProduct.this.mContext.getResources(),R.drawable.index);
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        View v = View.inflate(mContext,R.layout.activity_mask,null);
+        View v = View.inflate(mContext,R.layout.activity_products,null);
 
-        TextView Title = v.findViewById(R.id.Title);
-        TextView Count = v.findViewById(R.id.Count);
+        TextView Title = v.findViewById(R.id.txtProduct);
+        TextView Count = v.findViewById(R.id.txtPrice);
         ImageView Image = v.findViewById(R.id.imageView);
 
-        Mask mask = maskList.get(position);
-        Title.setText(mask.getTitle());
-        Count.setText(Integer.toString(mask.getCount()));
+        Products products = productsList.get(position);
+        Title.setText(products.getProducts());
+        Count.setText(products.getPrice());
 
-        Image.setImageBitmap(getUserImage(mask.getImage()));
+        Image.setImageBitmap(getUserImage(products.getImage()));
 
         return v;
     }

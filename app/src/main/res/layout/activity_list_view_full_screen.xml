@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A7E8D3"
     tools:context=".ListViewFullScreen">
 
     <Spinner
@@ -40,7 +41,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/buttons"
+        android:textColor="@color/white"
         android:id="@+id/btnFind"
         android:layout_width="65dp"
         android:layout_height="40dp"

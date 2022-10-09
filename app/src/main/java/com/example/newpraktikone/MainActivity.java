@@ -2,9 +2,11 @@ package com.example.newpraktikone;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
 
 import android.app.LauncherActivity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,11 +24,24 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.teal_200)));
+        setContentView(R.layout.activity_main);
 
         Button btnDisplayDate = (Button) findViewById(R.id.displayDate);
         Button btnGoToSetWindow = (Button) findViewById(R.id.btnGoToSetWindow);
-
+        Button btnDisplayPhoto = (Button) findViewById(R.id.btnDisplayPhoto);
+        btnDisplayPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(MainActivity.this,MainActivityPhoto.class);
+                startActivity(intent2);
+            }
+        });
         btnDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

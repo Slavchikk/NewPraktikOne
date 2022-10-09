@@ -17,7 +17,7 @@
         android:theme="@style/Theme.NewPraktikOne"
         tools:targetApi="31">
         <activity
-            android:name=".Mask"
+            android:name=".Products"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

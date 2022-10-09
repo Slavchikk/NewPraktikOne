@@ -1,8 +1,10 @@
 package com.example.newpraktikone;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -18,14 +20,18 @@ public class MainActivityPhoto extends AppCompatActivity {
 
     View v;
     Connection connection;
-    List<Mask> data;
+    List<Products> data;
     ListView listView;
-    AdapterMask pAdapter;
+    AdapterProduct pAdapter;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.teal_200)));
+        setContentView(R.layout.activity_main_photo);
         v = findViewById(com.google.android.material.R.id.ghost_view);
 
         GetTextFromSQL(v);
@@ -35,9 +41,9 @@ public class MainActivityPhoto extends AppCompatActivity {
         listView.setAdapter(pAdapter);
     }
     public void GetTextFromSQL(View v) {
-        data = new ArrayList<Mask>();
+        data = new ArrayList<Products>();
         listView = findViewById(R.id.lvData);
-        pAdapter = new AdapterMask(MainActivityPhoto.this, data);
+        pAdapter = new AdapterProduct(MainActivityPhoto.this, data);
         try {
             ConnectionHelper connectionHelper = new ConnectionHelper();
             connection = connectionHelper.connectionClass();
@@ -47,10 +53,10 @@ public class MainActivityPhoto extends AppCompatActivity {
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
-                    Mask tempMask = new Mask
+                    Products tempMask = new Products
                             (resultSet.getInt("Kod_id"),
                                     resultSet.getString("Name_product"),
-                                    Integer.parseInt(resultSet.getString("Price_Product")),
+                                    resultSet.getString("Price_Product"),
                                     resultSet.getString("Image")
                             );
                     data.add(tempMask);

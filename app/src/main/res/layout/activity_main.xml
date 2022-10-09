@@ -4,7 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A7E8D3"
+    android:visibility="visible"
     tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:background="@drawable/buttons"
+        android:textColor="@color/white"
+        android:id="@+id/btnDisplayPhoto"
+        android:layout_width="129dp"
+        android:layout_height="54dp"
+
+        android:text="Отобразить с фото"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
 
@@ -24,14 +41,14 @@
         android:id="@+id/displayDate"
         android:layout_width="129dp"
         android:layout_height="54dp"
-        android:layout_marginTop="512dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/buttons"
         android:text="Отобразить"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDisplayPhoto" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

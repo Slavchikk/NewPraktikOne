@@ -1,10 +1,12 @@
 package com.example.newpraktikone;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.AsyncTaskLoader;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +31,10 @@ public class setProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.teal_200)));
         setContentView(R.layout.activity_set_product);
         Button btnGoToMain = (Button) findViewById(R.id.btnGoToMain);
 
@@ -91,13 +97,13 @@ public class setProduct extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            status.setText("Sending Data to Database");
+            status.setText("Отправка...");
 
         }
 
         @Override
         protected void onPostExecute(String s) {
-            status.setText("Registration successuful");
+            status.setText("Выполнено");
             txtIDSet.setText("");
             txtProductSet.setText("");
             txtPriceSet.setText("");
@@ -133,13 +139,13 @@ public class setProduct extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            status.setText("Sending Data to Database");
+            status.setText("Отправка...");
 
         }
 
         @Override
         protected void onPostExecute(String s) {
-            status.setText("Registration successuful");
+            status.setText("Выполнено");
             txtIDSet.setText("");
             txtProductSet.setText("");
             txtPriceSet.setText("");
@@ -177,13 +183,13 @@ public class setProduct extends AppCompatActivity {
 
             @Override
             protected void onPreExecute() {
-                status.setText("Sending Data to Database");
+                status.setText("Отправка...");
 
             }
 
             @Override
             protected void onPostExecute(String s) {
-                status.setText("Registration successuful");
+                status.setText("Выполнено");
                 txtIDSet.setText("");
                 txtProductSet.setText("");
                 txtPriceSet.setText("");

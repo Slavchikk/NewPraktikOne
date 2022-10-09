@@ -1,10 +1,12 @@
 package com.example.newpraktikone;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.LauncherActivity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,7 +40,10 @@ public class ListViewFullScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.teal_200)));
         setContentView(R.layout.activity_list_view_full_screen);
         ArrayAdapter<String> orderByAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item,orderBy);

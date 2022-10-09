@@ -4,23 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A7E8D3"
     tools:context=".setProduct">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnGoToMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_width="144dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/buttons"
         android:text="В меню"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnInsertData" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteData" />
 
     <EditText
         android:id="@+id/txtIDSet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginTop="136dp"
 
         android:hint="ID"
@@ -32,66 +35,73 @@
     <EditText
 
         android:id="@+id/txtProductSet"
-        android:layout_width="106dp"
-        android:layout_height="wrap_content"
+        android:layout_width="141dp"
+        android:layout_height="42dp"
         android:layout_marginTop="136dp"
 
         android:hint="Продукт"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtPriceSet"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="40dp"
         android:layout_marginTop="136dp"
 
         android:hint="Цена"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSetData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_width="144dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="168dp"
+        android:background="@drawable/buttons"
         android:text="Добавить"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtProductSet" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnInsertData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="144dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/buttons"
         android:text="Изменить"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSetData" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDeleteData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="492dp"
+        android:layout_width="144dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="348dp"
+        android:background="@drawable/buttons"
         android:text="Удалить"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="180dp"
+        android:layout_width="126dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="124dp"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtProductSet" />

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A7E8D3"
+    tools:context=".Products">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="103dp"
+            android:layout_height="149dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="153dp"
+            android:layout_marginEnd="156dp"
+            android:src="@drawable/ic_launcher_foreground"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="48dp" />
+
+        <TextView
+            android:id="@+id/txtProduct"
+            android:layout_width="102dp"
+            android:layout_height="33dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="264dp"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="265dp"
+            tools:layout_editor_absoluteY="241dp" />
+
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="98dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="49dp"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="122dp"
+            tools:layout_editor_absoluteY="241dp" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
